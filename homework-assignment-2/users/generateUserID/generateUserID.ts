@@ -1,7 +1,5 @@
 import { listUsersIDs } from '../listUsersIDs'
-
-const generateID = (length: number): string =>
-  ('' + Math.floor(Math.random() * 10 ** length)).padStart(length, '0')
+import { generateID } from '../../utils'
 
 export const generateUserID = async () => {
   // Generate an ID
