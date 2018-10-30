@@ -4,6 +4,7 @@
   "description": "Homework Assignment #2",
   "main": "index.js",
   "scripts": {
+    "start": "echo \"Error: not ready yet\" && exit 1",
     "build": "tsc"
   },
   "author": "Lucas Paganini",
