@@ -1,0 +1,17 @@
+{
+  "name": "homework-assignment-2",
+  "version": "1.0.0",
+  "description": "Homework Assignment #2",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "Lucas Paganini",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "typescript": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.1"
+  }
+}
