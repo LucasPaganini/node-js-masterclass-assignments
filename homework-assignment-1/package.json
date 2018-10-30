@@ -1,0 +1,20 @@
+{
+  "name": "homework-assignment-1",
+  "version": "1.0.0",
+  "description": "Homework Assignment #1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/main",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "Lucas Paganini",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "source-map-support": "^0.5.9",
+    "typescript": "^3.1.4"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.1"
+  }
+}

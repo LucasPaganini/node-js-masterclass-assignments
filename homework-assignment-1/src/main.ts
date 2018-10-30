@@ -1,14 +1,9 @@
-import * as http from 'http'
-import * as url from 'url'
+import 'source-map-support/register'
 
-const PORT = 3000
-const getPath = (req: http.IncomingMessage) => url.parse(req.url).path
-const setCommonHeaders = (res: http.ServerResponse) => {
-  const headers = {
-    'Content-Type': 'application/json',
-  }
-  Object.entries(headers).forEach(([key, value]) => res.setHeader(key, value))
-}
+import * as http from 'http'
+
+import { PORT } from './constants'
+import { getPath, setCommonHeaders } from './utils'
 
 const server = http.createServer((req, res) => {
   const path = getPath(req)
