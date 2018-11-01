@@ -1,4 +1,6 @@
 import * as fs from 'fs'
+import { didAsyncThrow } from '../utils'
+
 import { listUsersIDs } from './listUsersIDs'
 import { createUser } from './createUser'
 import { deleteUser } from './deleteUser'
@@ -6,16 +8,6 @@ import { USERS_DB_PATH } from './USERS_DB_PATH'
 import { UserData } from './UserData'
 import { updateUser } from './updateUser'
 import { getUser } from './getUser'
-
-/**
- * Tells if the async function passed as parameter throws or not.
- *
- * @param {Function} fn Async function to listen to throw
- * @returns {boolean} If the function did throw
- */
-const didAsyncThrow = async (
-  fn: (...args: any[]) => Promise<any>,
-): Promise<boolean> => await fn().then(() => false, () => true)
 
 describe(`USERS MODULE`, () => {
   it(`Should access the users database`, async () => {
