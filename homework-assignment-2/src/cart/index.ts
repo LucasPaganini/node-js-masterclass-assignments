@@ -60,7 +60,7 @@ export const addToCart = async (user: User, item: MenuItem): Promise<Cart> => {
   return getCart(user).then(cart => cart.addItem(item))
 }
 
-const CARTS_DB_PATH = join(__dirname, './.carts')
+const CARTS_DB_PATH = join(__dirname, '../../db/carts')
 
 export const getCart = (user: User): Promise<Cart> => {
   const fullPath = `${CARTS_DB_PATH}/${user.id}`
