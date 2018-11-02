@@ -8,6 +8,7 @@ import { USERS_DB_PATH } from './USERS_DB_PATH'
 import { UserData } from './UserData'
 import { updateUser } from './updateUser'
 import { getUser } from './getUser'
+import { hashPassword } from './hashPassword'
 
 describe(`USERS MODULE`, () => {
   it(`Should access the users database`, async () => {
@@ -22,6 +23,7 @@ describe(`USERS MODULE`, () => {
       name: 'test',
       email: 'test@gmail.com',
       address: 'Test Avenue, 1000',
+      password: 'test123',
     })
     const usersIDsAfterCreation = await listUsersIDs()
     expect(usersIDsBeforeCreation).not.toContain(user.id)
@@ -35,6 +37,7 @@ describe(`USERS MODULE`, () => {
       name: 'updated-test',
       email: 'updated-test@gmail.com',
       address: 'Updated Test Avenue, 1000',
+      hashedPassword: await hashPassword('updated123'),
     }
     const updatedUser = await updateUser(user.id, updatedUserData)
     expect(updatedUser).toEqual({ id: user.id, ...updatedUserData })

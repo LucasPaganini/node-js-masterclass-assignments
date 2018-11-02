@@ -15,6 +15,7 @@ describe(`SESSIONS MODULE`, () => {
       name: 'test',
       email: 'test@gmail.com',
       address: 'Test Avenue, 1000',
+      password: 'test123',
     })
   })
 

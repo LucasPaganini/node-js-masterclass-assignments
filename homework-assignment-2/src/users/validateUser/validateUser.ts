@@ -17,5 +17,14 @@ export const validateUser = (data: any = {}): User => {
     throw new Error(`Invalid user data, email "${data.email}" is invalid`)
   const email: string = data.email.trim()
 
-  return { id, name, email, address }
+  if (
+    typeof data.hashedPassword !== 'string' ||
+    data.hashedPassword.trim() === ''
+  )
+    throw new Error(
+      `Invalid user data, hashed password "${data.hashedPassword}" is invalid`,
+    )
+  const hashedPassword: string = data.hashedPassword.trim()
+
+  return { id, name, email, address, hashedPassword }
 }
