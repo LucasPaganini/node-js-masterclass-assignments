@@ -1,5 +1,5 @@
 import { createCharge } from '.'
-import { stripeKeys, myEmail } from '../config'
+import { stripeKeys, myEmail } from '../../config'
 
 createCharge(stripeKeys, {
   amount: 999,

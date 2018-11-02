@@ -1,6 +1,6 @@
 import * as https from 'https'
 import * as querystring from 'querystring'
-import { mailgunKey } from '../config'
+import { mailgunKey } from '../../config'
 
 export interface EmailHead {
   subject: string

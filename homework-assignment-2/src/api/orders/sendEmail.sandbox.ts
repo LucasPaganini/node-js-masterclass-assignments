@@ -1,5 +1,5 @@
 import { sendEmail } from './sendEmail'
-import { myEmail } from '../config'
+import { myEmail } from '../../config'
 
 sendEmail(
   {

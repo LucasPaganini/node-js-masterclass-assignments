@@ -1,5 +1,5 @@
 import * as crypto from 'crypto'
-import { salt } from '../../config'
+import { salt } from '../../../config'
 
 /**
  * Hashes a plain text to a 128 char length string using sha512.
