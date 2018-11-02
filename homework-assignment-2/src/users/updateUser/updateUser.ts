@@ -6,7 +6,7 @@ import { writeFile } from 'fs'
 
 export const updateUser = async (
   userID: string,
-  updatedData: UserData,
+  updatedData: Partial<UserData>,
 ): Promise<User> => {
   const user = await getUser(userID)
   const updatedUser = { ...user, ...updatedData }

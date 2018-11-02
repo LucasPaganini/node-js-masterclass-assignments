@@ -3,7 +3,7 @@ import { generateUserID } from '../generateUserID'
 import { USERS_DB_PATH } from '../USERS_DB_PATH'
 import { UserData } from '../UserData'
 import { User } from '../User'
-import { Omit } from 'src/utils'
+import { Omit } from '../../utils'
 import { hashPassword } from '../hashPassword'
 
 export const createUser = async (
