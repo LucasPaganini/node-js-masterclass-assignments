@@ -1,7 +1,8 @@
 import { Handler } from '../Handler'
-import { updateUser, UserData } from '../../../api/users'
+import { updateUser } from '../../../api/users'
 import { HTTPError, getRequestPayload } from '../../utils'
 import * as url from 'url'
+import { authenticateRequest } from '../../../api/sessions'
 
 /**
  * Server handler to update a user data.
@@ -14,7 +15,18 @@ export const updateUserHandler: Handler = {
   method: 'PUT',
   handle: async (req, res) => {
     try {
-      // TODO: Add authentication
+      // Parse route parameters
+      const route = url.parse(req.url, true).pathname
+      const regex = /^\/user\/(\w+)$/
+      const [_, userID] = regex.exec(route)
+
+      // Authentication
+      try {
+        const session = await authenticateRequest(req)
+        if (session.userID !== userID) throw new Error()
+      } catch (err) {
+        throw new HTTPError(401, 'Unauthorized')
+      }
 
       // Check the content type
       const contentType = req.headers['content-type']
@@ -34,11 +46,6 @@ export const updateUserHandler: Handler = {
           'Error parsing the request payload. Check your syntax.',
         )
       }
-
-      // Parse route parameters
-      const route = url.parse(req.url, true).pathname
-      const regex = /^\/user\/(\w+)$/
-      const [_, userID] = regex.exec(route)
 
       // Validate payload data
       let name: string = undefined
