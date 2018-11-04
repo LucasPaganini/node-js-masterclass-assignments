@@ -1,35 +1,6 @@
 import { Handler } from '../Handler'
-import { IncomingMessage } from 'http'
 import { createUser } from '../../../api/users'
-
-const getRequestPayload = (req: IncomingMessage): Promise<string> =>
-  new Promise((resolve, reject) => {
-    let body = ''
-    req.on('data', chunk => {
-      body += chunk.toString()
-    })
-    req.on('end', () => {
-      resolve(body)
-    })
-    req.on('error', reject)
-  })
-
-class HTTPError extends Error {
-  public readonly statusCode: number
-  public readonly userMessage: string
-
-  constructor(
-    statusCode: number,
-    userMessage: string,
-    internalMessage?: string,
-  ) {
-    if (internalMessage === undefined) internalMessage = userMessage
-    super(internalMessage)
-
-    this.statusCode = statusCode
-    this.userMessage = userMessage
-  }
-}
+import { HTTPError, getRequestPayload } from '../../utils'
 
 /**
  * Server handler to create a new user.
