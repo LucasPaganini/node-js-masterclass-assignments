@@ -26,3 +26,31 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 1. Install dependencies `npm install`.
 2. Build the source code `npm run build`.
 3. Run `npm start`.
+
+## REST API
+
+### Users
+
+#### Create a user
+
+- Method: POST
+- Route: /user
+- Authentication: No
+
+#### Update user data
+
+- Method: PUT
+- Route: /user/:id
+- Authentication: Yes
+
+#### Delete user
+
+- Method: DELETE
+- Route: /user/:id
+- Authentication: Yes
+
+#### Get user data
+
+- Method: GET
+- Route: /user/:id
+- Authentication: Yes
