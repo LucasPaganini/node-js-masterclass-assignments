@@ -78,7 +78,7 @@ export const createUserHandler: Handler = {
       })
       res.end(
         JSON.stringify({
-          data: [{ message: 'User created.', user }],
+          data: { message: 'User created.', user },
         }),
       )
     } catch (err) {
