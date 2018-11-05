@@ -96,3 +96,9 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: GET
 - Route: /cart
 - Authentication: Yes
+
+### Pay cart items
+
+- Mehtod: POST
+- Route: /cart/pay
+- Authentication: Yes
