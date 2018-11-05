@@ -8,7 +8,7 @@ This is the second of several homework assignments from **The Node.js Master Cla
 2. Build the source code `npm run build`.
 3. Start the server on localhost:3000 `npm start`.
 
-_You must set some environment variables to run the app, see [all configurations](#configurations)._
+_You must set some environment variables to run the app, see [all configurations](#configuration)._
 
 ## Configuration
 
