@@ -16,6 +16,7 @@ export const sendEmail = (head: EmailHead, body: string) => {
       html: body,
     })
 
+    const auth = new Buffer('api:' + mailgunKey).toString('base64')
     const options: https.RequestOptions = {
       hostname: 'api.mailgun.net',
       port: 443,
@@ -24,7 +25,7 @@ export const sendEmail = (head: EmailHead, body: string) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': postData.length,
-        Authorization: `api:${mailgunKey}`,
+        Authorization: 'Basic ' + auth,
       },
     }
 
@@ -34,7 +35,6 @@ export const sendEmail = (head: EmailHead, body: string) => {
       res.on('data', data => (resData += data))
       res.on('end', () => {
         try {
-          console.log('data', resData)
           resolve(JSON.parse(resData))
         } catch (err) {
           reject(err)
