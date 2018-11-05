@@ -54,3 +54,17 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: GET
 - Route: /user/:id
 - Authentication: Yes
+
+### Auth
+
+#### Login
+
+- Method: POST
+- Route: /auth
+- Authentication: Yes (user email and password in json body)
+
+#### Logout
+
+- Method: DELETE
+- Route: /auth
+- Authentication: Yes
