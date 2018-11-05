@@ -1,33 +1,68 @@
 # Homework Assignment #2
 
-This is the second of several homework assignments you'll receive in this course. In order to receive your certificate of completion (at the end of this course) you must complete all the assignments and receive a passing grade.
+This is the second of several homework assignments from **The Node.js Master Class**. In order to receive my certificate of completion (at the end of the course), I must complete all the assignments and receive a passing grade.
 
-## How to Turn It In
-
-1. Create a public github repo for this assignment.
-2. Create a new post in the [Facebook Group](https://www.facebook.com/groups/1282717078530848/) and note "Homework Assignment #2" at the top.
-3. In that thread, discuss what you have built, and include the link to your Github repo.
-
-## The Assignment (Scenario)
-
-You are building the **API** for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:
-
-1. New users can be created, their information can be edited, and they can be deleted. We should store their name, email address, and street address.
-2. Users can log in and log out by creating or destroying a token.
-3. When a user is logged in, they should be able to GET all the possible menu items (these items can be hardcoded into the system).
-4. A logged-in user should be able to fill a shopping cart with menu items
-5. A logged-in user should be able to create an order. You should integrate with the Sandbox of [Stripe.com](https://stripe.com/) to accept their payment. _Note: Use the stripe sandbox for your testing. Follow this link and click on the "tokens" tab to see the fake tokens you can use server-side to confirm the integration is working: https://stripe.com/docs/testing#cards_
-6. When an order is placed, you should email the user a receipt. You should integrate with the sandbox of [Mailgun.com](http://mailgun.com/) for this. _Note: Every Mailgun account comes with a sandbox email account domain (whatever@sandbox123.mailgun.org) that you can send from by default. So, there's no need to setup any DNS for your domain for this task https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account_
-
-This is an open-ended assignment. You may take any direction you'd like to go with it, as long as your project includes the requirements. It can include anything else you wish as well.
-
-## How to run
+## Installing / Getting started
 
 1. Install dependencies `npm install`.
 2. Build the source code `npm run build`.
-3. Run `npm start`.
+3. Start the server on localhost:3000 `npm start`.
 
-## REST API
+_You must set some environment variables to run the app, see [all configurations](#configurations)._
+
+## Configuration
+
+### Required environment variables
+
+- STRIPE_PUBLISHABLE_KEY
+- STRIPE_SECRET_KEY
+- MAILGUN_KEY
+
+### Optional environment variables
+
+- MY_EMAIL
+
+## Tests
+
+This codebase is not entirely covered but there is also no need to. You can run the few tests that were written with `npm test`.
+
+## API Reference
+
+### Auth
+
+All requests that require authentication should have an Authorization header with the session token.
+
+Example headers
+
+```json
+{
+  "Content-Type": "application/json",
+  "Authorization": "8222122342"
+}
+```
+
+#### Login
+
+- Method: POST
+- Route: /auth
+- Authentication: Yes (user email and password in json body)
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "email": "test@test.com",
+  "password": "abc123"
+}
+```
+
+#### Logout
+
+- Method: DELETE
+- Route: /auth
+- Authentication: Yes
+- Body payload: No
 
 ### Users
 
@@ -36,38 +71,47 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: POST
 - Route: /user
 - Authentication: No
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "name": "Tester",
+  "email": "test@test.com",
+  "address": "Test Avenue, 1000",
+  "password": "abc123"
+}
+```
 
 #### Update user data
 
 - Method: PUT
 - Route: /user/:id
 - Authentication: Yes
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "name": "My new name"
+}
+```
 
 #### Delete user
 
 - Method: DELETE
 - Route: /user/:id
 - Authentication: Yes
+- Body payload: No
 
 #### Get user data
 
 - Method: GET
 - Route: /user/:id
 - Authentication: Yes
-
-### Auth
-
-#### Login
-
-- Method: POST
-- Route: /auth
-- Authentication: Yes (user email and password in json body)
-
-#### Logout
-
-- Method: DELETE
-- Route: /auth
-- Authentication: Yes
+- Body payload: No
 
 ### Menu Items
 
@@ -76,6 +120,7 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: GET
 - Route: /menu-items
 - Authentication: Yes
+- Body payload: No
 
 ### Cart
 
@@ -84,21 +129,49 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: POST
 - Route: /cart
 - Authentication: Yes
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "menuItemID": "1"
+}
+```
 
 #### Remove one item from cart
 
 - Method: DELETE
 - Route: /cart
 - Authentication: Yes
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "menuItemID": "1"
+}
+```
 
 #### Get cart data
 
 - Method: GET
 - Route: /cart
 - Authentication: Yes
+- Body payload: No
 
-### Pay cart items
+#### Pay cart items
 
-- Mehtod: POST
+- Method: POST
 - Route: /cart/pay
 - Authentication: Yes
+- Body payload: Yes
+
+Payload example
+
+```json
+{
+  "paymentSource": "tok_visa"
+}
+```
