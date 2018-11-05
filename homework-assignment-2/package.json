@@ -4,8 +4,8 @@
   "description": "Homework Assignment #2",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/server/main",
-    "serve": "tsc -p tsconfig.app.json --watch & nodemon dist/server/main",
+    "start": "node dist/main",
+    "serve": "tsc -p tsconfig.app.json --watch & nodemon dist/main",
     "test": "tsc -p tsconfig.spec.json && jasmine --config=jasmine.json",
     "build": "tsc -p tsconfig.app.json"
   },

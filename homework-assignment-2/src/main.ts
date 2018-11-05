@@ -1,6 +1,6 @@
 import * as http from 'http'
 import * as url from 'url'
-import * as handlers from './handlers'
+import * as handlers from './server/handlers'
 
 const server = http.createServer((request, response) => {
   const path = url.parse(request.url, true).pathname
