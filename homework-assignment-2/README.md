@@ -76,3 +76,23 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: GET
 - Route: /menu-items
 - Authentication: Yes
+
+### Cart
+
+#### Add one item to cart
+
+- Method: POST
+- Route: /cart
+- Authentication: Yes
+
+#### Remove one item from cart
+
+- Method: DELETE
+- Route: /cart
+- Authentication: Yes
+
+#### Get cart data
+
+- Method: GET
+- Route: /cart
+- Authentication: Yes

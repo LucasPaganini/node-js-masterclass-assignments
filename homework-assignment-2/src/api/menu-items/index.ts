@@ -18,3 +18,11 @@ const menuItems: Array<MenuItem> = [
 ]
 
 export const getMenuItems = () => Promise.resolve(menuItems)
+
+export const getMenuItem = async (id: string): Promise<MenuItem> => {
+  const items = await getMenuItems()
+  const item = items.find(i => i.id === id)
+  if (item === undefined)
+    throw new Error(`No menu item found with the id "${id}"`)
+  return item
+}
