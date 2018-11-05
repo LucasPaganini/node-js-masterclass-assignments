@@ -3,8 +3,19 @@ import { SESSION_DURATION } from '../SESSION_DURATION'
 import { SESSIONS_DB_PATH } from '../SESSIONS_DB_PATH'
 import { generateToken } from '../generateToken'
 import { writeFile } from 'fs'
+import { getUser } from '../../users'
+import { hashPassword } from '../../users/hashPassword'
 
-export const createSession = async (userID: string): Promise<Session> => {
+export const createSession = async (
+  userID: string,
+  password: string,
+): Promise<Session> => {
+  const [user, hashPass] = await Promise.all([
+    getUser(userID),
+    hashPassword(password),
+  ])
+  if (user.hashedPassword !== hashPass) throw new Error('Wrong password')
+
   const session: Session = {
     userID,
     expiration: Date.now() + SESSION_DURATION,

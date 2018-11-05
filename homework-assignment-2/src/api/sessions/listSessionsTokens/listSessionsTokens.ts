@@ -3,6 +3,7 @@ import { SESSIONS_DB_PATH } from '../SESSIONS_DB_PATH'
 
 export const listSessionsTokens = async (): Promise<string[]> => {
   const files = await listDirectoryFiles(SESSIONS_DB_PATH)
-  const tokens = files.map(removeFileExtension)
+  const jsonFiles = files.filter(f => f.endsWith('.json'))
+  const tokens = jsonFiles.map(removeFileExtension)
   return tokens
 }

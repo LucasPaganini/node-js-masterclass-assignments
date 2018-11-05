@@ -10,12 +10,13 @@ import { deleteSession } from './deleteSession'
 
 describe(`SESSIONS MODULE`, () => {
   let user: users.User
+  const password = 'test123'
   beforeAll(async () => {
     user = await users.createUser({
       name: 'test',
       email: 'test@gmail.com',
       address: 'Test Avenue, 1000',
-      password: 'test123',
+      password,
     })
   })
 
@@ -31,7 +32,7 @@ describe(`SESSIONS MODULE`, () => {
   it(`Should create, get, extend and delete sessions`, async () => {
     // Creating
     const sessionsBeforeCreation = await listSessionsTokens()
-    const session = await createSession(user.id)
+    const session = await createSession(user.id, password)
     const sessionsAfterCreation = await listSessionsTokens()
     expect(sessionsBeforeCreation).not.toContain(session.token)
     expect(sessionsAfterCreation).toContain(session.token)

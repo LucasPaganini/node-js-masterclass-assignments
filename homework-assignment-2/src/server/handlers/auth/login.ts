@@ -1,15 +1,16 @@
 import { Handler } from '../Handler'
-import { createUser } from '../../../api/users'
+import { getUserByEmail } from '../../../api/users'
 import { HTTPError, getRequestPayload } from '../../utils'
+import { createSession } from '../../../api/sessions'
 
 /**
- * Server handler to create a new user.
+ * Server handler to generate a user token (login).
  *
  * Accepted content types:
  * - aplication/json
  */
-export const createUserHandler: Handler = {
-  route: '/user',
+export const loginHandler: Handler = {
+  route: '/auth',
   method: 'POST',
   handle: async (req, res) => {
     try {
@@ -33,26 +34,11 @@ export const createUserHandler: Handler = {
       }
 
       // Validate payload data
-      if (typeof payload.name !== 'string' || payload.name.trim() === '') {
-        const msg = `User name is required.`
-        throw new HTTPError(400, msg)
-      }
-      const name = (payload.name as string).trim()
-
       if (typeof payload.email !== 'string' || payload.email.trim() === '') {
         const msg = `User email is required.`
         throw new HTTPError(400, msg)
       }
       const email = (payload.email as string).trim()
-
-      if (
-        typeof payload.address !== 'string' ||
-        payload.address.trim() === ''
-      ) {
-        const msg = `User address is required.`
-        throw new HTTPError(400, msg)
-      }
-      const address = (payload.address as string).trim()
 
       if (
         typeof payload.password !== 'string' ||
@@ -63,14 +49,9 @@ export const createUserHandler: Handler = {
       }
       const password = (payload.password as string).trim()
 
-      // Create the user
-      const user = await createUser({
-        name,
-        email,
-        address,
-        password,
-      })
-      delete user.hashedPassword // Don't show sensible information
+      // Create the session
+      const userID = (await getUserByEmail(email)).id
+      const session = await createSession(userID, password)
 
       // Response
       res.writeHead(200, {
@@ -78,12 +59,10 @@ export const createUserHandler: Handler = {
       })
       res.end(
         JSON.stringify({
-          data: { message: 'User created.', user },
+          data: { session },
         }),
       )
     } catch (err) {
-      console.log(err)
-
       if (err instanceof HTTPError) {
         res.writeHead(err.statusCode, {
           'Content-Type': 'application/json',
@@ -95,7 +74,7 @@ export const createUserHandler: Handler = {
         })
         res.end(
           JSON.stringify({
-            errors: [{ message: 'Could not create the user.' }],
+            errors: [{ message: 'Could not create the session.' }],
           }),
         )
       }
