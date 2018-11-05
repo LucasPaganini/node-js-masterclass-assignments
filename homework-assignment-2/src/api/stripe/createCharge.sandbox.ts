@@ -5,5 +5,6 @@ createCharge(stripeKeys, {
   amount: 999,
   currency: 'usd',
   source: 'tok_visa',
+  description: 'Example charge',
   receipt_email: myEmail,
 }).then(console.log)

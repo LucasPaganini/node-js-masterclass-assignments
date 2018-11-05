@@ -52,6 +52,14 @@ export class Cart {
     return updateCart(newCart)
   }
 
+  public async clear(): Promise<Cart> {
+    const newCart = new Cart({
+      userID: this.userID,
+      items: [],
+    })
+    return updateCart(newCart)
+  }
+
   public getItem(itemID: MenuItem['id']): CartMenuItem | null {
     if (this._items[itemID] === undefined) return null
     return this._items[itemID]

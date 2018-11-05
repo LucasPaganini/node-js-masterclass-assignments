@@ -18,6 +18,7 @@ export interface CreatableCharge {
   currency: string
   source: string
   receipt_email: string
+  description: string
 }
 
 export type Charge = any

@@ -1,6 +1,6 @@
 import { CartMenuItem } from '../cart'
 
-export class OrderData {
+export interface OrderData {
   userID: string
   items: CartMenuItem[]
 }

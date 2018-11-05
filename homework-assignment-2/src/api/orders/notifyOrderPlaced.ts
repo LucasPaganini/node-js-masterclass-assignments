@@ -12,13 +12,13 @@ const buildEmail = (order: OrderData, user: User): string => `
   ${order.items.map(
     item => `
   <li>
-    <strong>${item.quantity}x ${item.title}</strong>: ${item.price *
+    <strong>${item.quantity}x ${item.title}</strong>: U$${item.price *
       item.quantity}
   </li>
   `,
   )}
   <li>
-    <strong>Total:</strong> ${order.items
+    <strong>Total:</strong> U$${order.items
       .map(item => item.quantity * item.price)
       .reduce((acc, cur) => acc + cur, 0)}
   </li>
