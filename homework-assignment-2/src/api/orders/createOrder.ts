@@ -2,7 +2,7 @@ import { Cart } from '../cart'
 import { OrderData } from './OrderData'
 import { CreatableCharge, createCharge } from '../stripe'
 import { getUser } from '../users'
-import { stripeKeys } from '../../config'
+import { STRIPE_KEYS } from '../../config'
 import { notifyOrderPlaced } from './notifyOrderPlaced'
 
 export const createOrder = async (
@@ -19,7 +19,7 @@ export const createOrder = async (
     currency: 'usd',
     source: paymentSource,
   }
-  const charge = await createCharge(stripeKeys, chargeData)
+  const charge = await createCharge(STRIPE_KEYS, chargeData)
 
   await notifyOrderPlaced(order)
 

@@ -1,9 +1,9 @@
 import { sendEmail } from './sendEmail'
-import { myEmail } from '../../config'
+import { MY_EMAIL } from '../../config'
 
 sendEmail(
   {
-    to: [myEmail],
+    to: [MY_EMAIL],
     subject: 'Manual testing',
   },
   'This is just a test',

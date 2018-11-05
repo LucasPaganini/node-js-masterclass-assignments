@@ -1,4 +1,4 @@
 import { getUserByEmail } from './getUserByEmail'
-import { myEmail } from '../../../config'
+import { MY_EMAIL } from '../../../config'
 
-getUserByEmail(myEmail).then(console.log)
+getUserByEmail(MY_EMAIL).then(console.log)

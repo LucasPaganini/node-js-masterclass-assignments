@@ -1,6 +1,6 @@
 import * as https from 'https'
 import * as querystring from 'querystring'
-import { mailgunKey } from '../../config'
+import { MAILGUN_KEY } from '../../config'
 
 export interface EmailHead {
   subject: string
@@ -16,7 +16,7 @@ export const sendEmail = (head: EmailHead, body: string) => {
       html: body,
     })
 
-    const auth = new Buffer('api:' + mailgunKey).toString('base64')
+    const auth = new Buffer('api:' + MAILGUN_KEY).toString('base64')
     const options: https.RequestOptions = {
       hostname: 'api.mailgun.net',
       port: 443,

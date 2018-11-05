@@ -1,10 +1,10 @@
 import { createCharge } from '.'
-import { stripeKeys, myEmail } from '../../config'
+import { STRIPE_KEYS, MY_EMAIL } from '../../config'
 
-createCharge(stripeKeys, {
+createCharge(STRIPE_KEYS, {
   amount: 999,
   currency: 'usd',
   source: 'tok_visa',
   description: 'Example charge',
-  receipt_email: myEmail,
+  receipt_email: MY_EMAIL,
 }).then(console.log)
