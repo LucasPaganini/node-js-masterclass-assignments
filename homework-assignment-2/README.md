@@ -68,3 +68,11 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 - Method: DELETE
 - Route: /auth
 - Authentication: Yes
+
+### Menu Items
+
+#### Get all menu items
+
+- Method: GET
+- Route: /menu-items
+- Authentication: Yes
