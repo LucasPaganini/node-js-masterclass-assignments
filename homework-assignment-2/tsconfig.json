@@ -5,6 +5,7 @@
     "sourceMap": true,
     "target": "es2018",
     "lib": ["es2018"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "src"
   }
 }
