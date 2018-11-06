@@ -16,6 +16,16 @@ export class AuthService {
   }
 
   /**
+   * Returns auth headers to be used on HTTP requestS.
+   *
+   * @returns {Promise<Headers>} Auth HTTP headers
+   */
+  async getAuthHeaders() {
+    const token = await this._getToken()
+    return new Headers({ Authorization: token })
+  }
+
+  /**
    * Authenticates the user.
    *
    * @param {string} email User email
