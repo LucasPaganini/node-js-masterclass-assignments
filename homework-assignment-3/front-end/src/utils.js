@@ -2,18 +2,11 @@ const path = require('path')
 const fs = require('fs')
 
 /**
- * Path to the generated code/assets directory.
+ * Path to the generated code/pages/assets directory.
  *
  * @constant
  */
-const DIST_PATH = path.join(__dirname, 'dist')
-
-/**
- * Contents of the index file of the SPA.
- *
- * @constant
- */
-const APP_INDEX = fs.readFileSync(path.join(DIST_PATH, 'index.html')).toString()
+const DIST_PATH = path.join(__dirname, 'pages')
 
 /**
  * Get the contents of a static file
@@ -46,6 +39,7 @@ const getContentTypeByExtension = extension => {
     js: 'application/javascript; charset=UTF-8',
     ico: 'image/x-icon',
     txt: 'text/plain; charset=UTF-8',
+    html: 'text/html; charset=UTF-8',
   }
   const contentType = map[extension]
   if (contentType === undefined)
@@ -66,7 +60,6 @@ const getFileExtensionFromPath = path => {
 
 module.exports = {
   DIST_PATH,
-  APP_INDEX,
   getStaticFile,
   getContentTypeByExtension,
   getFileExtensionFromPath,

@@ -6,6 +6,8 @@ const server = http.createServer(async (request, response) => {
   const path = url.parse(request.url, true).pathname
   const method = request.method
 
+  console.log({ path, method })
+
   // If the method is GET and the path ends with a file extension, try to serve a static asset
   if (method === 'GET' && /\/.+\.\w+$/.test(path)) {
     try {
@@ -21,10 +23,19 @@ const server = http.createServer(async (request, response) => {
     }
   }
 
-  // If the method is GET and the path does not end with a file extension, serve the app index
+  // If the method is GET and the path is to a directory, search for an index.html file in the directory root
   if (method === 'GET' && !/\/.+\.\w+$/.test(path)) {
-    response.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' })
-    return response.end(utils.APP_INDEX)
+    try {
+      const fullpath = path + '/index.html'
+      const file = await utils.getStaticFile(fullpath)
+      const contentType = utils.getContentTypeByExtension('html')
+      response.writeHead(200, { 'Content-Type': contentType })
+      return response.end(file)
+    } catch (err) {
+      console.log(err)
+      response.writeHead(404)
+      return response.end()
+    }
   }
 
   // Every other request is a 404
