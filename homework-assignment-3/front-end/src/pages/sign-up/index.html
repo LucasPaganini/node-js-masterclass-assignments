@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <base href="/sign-in/">
   <link rel="stylesheet" href="style.css">
-  <title>Pizza Delivery | Login</title>
+  <title>Pizza Delivery | Create Account</title>
 </head>
 
 <body>
@@ -16,17 +16,23 @@
     <h1>Pizza Delivery</h1>
   </header>
 
-  <form id="sign-in-form">
+  <form id="sign-up-form">
+    <label>Name
+      <input type="text" name="name" required>
+    </label>
     <label>Email
       <input type="email" name="email" required>
+    </label>
+    <label>Address
+      <input type="text" name="address" required>
     </label>
     <label>Password
       <input type="password" name="password" required>
     </label>
-    <button type="submit">login</button>
+    <button type="submit">Create account</button>
   </form>
 
-  <a href="/sign-up">Or create an account</a>
+  <a href="/sign-in">I already have an account</a>
 
   <script type="module" src="main.mjs"></script>
 </body>

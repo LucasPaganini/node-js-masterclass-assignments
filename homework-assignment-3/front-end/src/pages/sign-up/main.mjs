@@ -1,16 +1,20 @@
 import { AuthService } from '/assets/auth.service.mjs'
+import { UsersService } from '/assets/users.service.mjs'
 
 const auth = new AuthService()
-const form = document.getElementById('sign-in-form')
+const users = new UsersService(auth)
+const form = document.getElementById('sign-up-form')
 
 form.addEventListener('submit', async e => {
   e.preventDefault()
 
+  const name = form.elements.name.value
   const email = form.elements.email.value
   const password = form.elements.password.value
+  const address = form.elements.address.value
 
   try {
-    await auth.login(email, password)
+    await users.createUser(name, address, email, password)
     location.href = '/menu'
   } catch (err) {
     alert(err.message)

@@ -1,4 +1,4 @@
-const API_HOST = 'http://localhost:3000'
+import { API_HOST } from './constants.mjs'
 
 export class AuthService {
   /**
@@ -8,7 +8,7 @@ export class AuthService {
    */
   async isAuthenticated() {
     try {
-      this._getToken()
+      await this._getToken()
       return true
     } catch (err) {
       return false
