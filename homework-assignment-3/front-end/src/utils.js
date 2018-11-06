@@ -36,7 +36,8 @@ const getStaticFile = async filepath => {
 const getContentTypeByExtension = extension => {
   const map = {
     css: 'text/css; charset=UTF-8',
-    js: 'application/javascript; charset=UTF-8',
+    js: 'text/javascript; charset=UTF-8',
+    mjs: 'text/javascript; charset=UTF-8',
     ico: 'image/x-icon',
     txt: 'text/plain; charset=UTF-8',
     html: 'text/html; charset=UTF-8',

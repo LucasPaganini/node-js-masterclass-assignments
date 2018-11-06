@@ -15,18 +15,19 @@
     <h1>Pizza Delivery</h1>
   </header>
 
-  <form>
+  <form id="sign-in-form">
     <label>Email
-      <input type="email">
+      <input type="email" name="email" required>
     </label>
     <label>Password
-      <input type="password">
+      <input type="password" name="password" required>
     </label>
     <button type="submit">login</button>
   </form>
 
   <a href="/sign-up">Or create an account</a>
 
+  <script type="module" src="/sign-in/main.mjs"></script>
 </body>
 
 </html>

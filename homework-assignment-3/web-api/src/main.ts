@@ -6,6 +6,13 @@ const server = http.createServer((request, response) => {
   const path = url.parse(request.url, true).pathname
   const method = request.method
 
+  // Set CORS
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  response.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept',
+  )
+
   console.log({ path, method })
 
   const handler = Object.values(handlers).find(
