@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <base href="/cart/" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pizza Delivery | Cart</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Pizza Delivery | Cart</h1>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <table id="order-container">
+      <thead>
+        <tr>
+          <td>Product</td>
+          <td>Ammount</td>
+          <td>Price</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">Total</td>
+          <td id="table-total-price"></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <a href="/checkout">Checkout</a> <a href="/menu">Keep shopping</a>
+
+    <script type="module" src="main.mjs"></script>
+  </body>
+</html>
