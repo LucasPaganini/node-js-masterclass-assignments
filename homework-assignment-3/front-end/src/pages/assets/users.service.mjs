@@ -1,4 +1,3 @@
-import { AuthService } from './auth.service.mjs'
 import { API_HOST } from './constants.mjs'
 
 export class UsersService {
