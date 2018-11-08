@@ -110,19 +110,17 @@ const createCart = (userID: string): Promise<Cart> => {
 
 export const getCart = async (userID: string): Promise<Cart> => {
   const fullPath = `${CARTS_DB_PATH}/${userID}.json`
-
-  const maybeCartData = await new Promise<string>((resolve, reject) => {
-    readFile(fullPath, (err, maybeCart) => {
-      if (err) reject(err)
-      else resolve(maybeCart.toString())
+  try {
+    const maybeCartData = await new Promise<string>((resolve, reject) => {
+      readFile(fullPath, (err, maybeCart) => {
+        if (err) reject(err)
+        else resolve(maybeCart.toString())
+      })
     })
-  })
-
-  if (maybeCartData === undefined) {
-    return createCart(userID)
-  } else {
     const maybeCart = new Cart(validateJSONCart(JSON.parse(maybeCartData)))
     return maybeCart
+  } catch (err) {
+    return createCart(userID)
   }
 }
 
