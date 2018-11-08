@@ -53,6 +53,30 @@ export class AuthService {
   }
 
   /**
+   * Logs out the user.
+   *
+   * @returns {Promise<Object>}
+   */
+  async logout() {
+    const res = await fetch(API_HOST + '/auth', {
+      method: 'DELETE',
+      headers: await this.getAuthHeaders(),
+    })
+    const json = await res.json()
+
+    if (json.errors) {
+      const msg = json.errors.map(error => error.message).join(' ')
+      throw new Error(msg)
+    }
+
+    await this._deleteToken()
+
+    location.href = '/sign-in'
+
+    return json
+  }
+
+  /**
    * Save authentication token on local storage.
    *
    * @param {string} token Authentication token to be saved
@@ -62,6 +86,13 @@ export class AuthService {
     this._token = token
 
     localStorage.setItem('auth_token', token)
+    return undefined
+  }
+
+  async _deleteToken() {
+    this._token = undefined
+
+    localStorage.removeItem('auth_token')
     return undefined
   }
 

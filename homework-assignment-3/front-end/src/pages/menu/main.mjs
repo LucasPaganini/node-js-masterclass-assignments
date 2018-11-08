@@ -6,6 +6,11 @@ const auth = new AuthService()
 const menu = new MenuService(auth)
 const cart = new CartService(auth)
 const menuItemsContainer = document.getElementById('menu-items-container')
+const logoutBtn = document.getElementById('logout-btn')
+
+logoutBtn.addEventListener('click', async () => {
+  const r = await auth.logout()
+})
 
 const renderMenuItem = menuItem => {
   // <h2>{{ menuItem.title }}</h2>

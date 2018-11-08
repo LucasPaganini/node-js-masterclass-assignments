@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <base href="/sign-in/" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pizza Delivery | Create Account</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <base href="/sign-in/">
-  <link rel="stylesheet" href="style.css">
-  <title>Pizza Delivery | Create Account</title>
-</head>
+  <body>
+    <header><h1>Pizza Delivery</h1></header>
 
-<body>
+    <form id="sign-up-form">
+      <label>Name <input type="text" name="name" required /> </label>
+      <label>Email <input type="email" name="email" required /> </label>
+      <label>Address <input type="text" name="address" required /> </label>
+      <label
+        >Password <input type="password" name="password" required />
+      </label>
+      <button type="submit">Create account</button>
+    </form>
 
-  <header>
-    <h1>Pizza Delivery</h1>
-  </header>
+    <a href="/sign-in">I already have an account</a>
 
-  <form id="sign-up-form">
-    <label>Name
-      <input type="text" name="name" required>
-    </label>
-    <label>Email
-      <input type="email" name="email" required>
-    </label>
-    <label>Address
-      <input type="text" name="address" required>
-    </label>
-    <label>Password
-      <input type="password" name="password" required>
-    </label>
-    <button type="submit">Create account</button>
-  </form>
-
-  <a href="/sign-in">I already have an account</a>
-
-  <script type="module" src="main.mjs"></script>
-</body>
-
+    <script type="module" src="main.mjs"></script>
+  </body>
 </html>
