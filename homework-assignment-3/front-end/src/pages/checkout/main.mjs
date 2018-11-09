@@ -1,6 +1,9 @@
 import { AuthService } from '/assets/auth.service.mjs'
 import { CartService } from '/assets/cart.service.mjs'
 
+import { LogoComponent } from '/assets/logo.component.mjs'
+customElements.define('pizza-logo', LogoComponent)
+
 const auth = new AuthService()
 const cartService = new CartService(auth)
 

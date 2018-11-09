@@ -1,3 +1,8 @@
 body {
   background: #f8e7cd;
 }
+
+pizza-logo {
+  max-width: 200px;
+  margin: 0 auto;
+}

@@ -1,5 +1,8 @@
 import { AuthService } from '/assets/auth.service.mjs'
 
+import { LogoComponent } from '/assets/logo.component.mjs'
+customElements.define('pizza-logo', LogoComponent)
+
 const auth = new AuthService()
 const form = document.getElementById('sign-in-form')
 
