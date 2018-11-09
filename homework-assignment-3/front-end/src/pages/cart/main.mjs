@@ -33,14 +33,14 @@ const renderCartItem = cartItem => {
   addAmmount.textContent = 'Add'
   addAmmount.addEventListener('click', async () => {
     await cartService.addItem(cartItem.id)
-    setTimeout(() => location.reload(), 250)
+    location.reload()
   })
 
   const removeAmmount = document.createElement('button')
   removeAmmount.textContent = 'Remove'
   removeAmmount.addEventListener('click', async () => {
     await cartService.removeItem(cartItem.id)
-    setTimeout(() => location.reload(), 250)
+    location.reload()
   })
 
   const ammountContainer = document.createElement('td')
