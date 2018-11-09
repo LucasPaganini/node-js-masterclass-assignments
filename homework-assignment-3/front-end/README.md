@@ -4,10 +4,4 @@ This is the front-end server for the Pizza-Delivery, it runs on localhost:4200 a
 
 ## Installing / Getting started
 
-1. Install dependencies `npm install`.
-2. Build the source code `npm run build`.
-3. Start the server on localhost:4200 `npm start`.
-
-## Development server
-
-Run `npm run serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Start the server on localhost:4200 `bash start.sh`.
