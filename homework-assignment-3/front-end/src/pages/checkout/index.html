@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <base href="/checkout/" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pizza Delivery | Checkout</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Pizza Delivery | Checkout</h1>
+      <button id="logout-btn">Logout</button>
+    </header>
+
+    <form id="checkout-form">
+      <label
+        >Name on the credit card <input type="text" name="name" required />
+      </label>
+      <label>Card number <input type="text" name="number" required /> </label>
+      <label
+        >Expiration date <input type="month" name="expiration" required />
+      </label>
+      <label>CVV <input type="text" name="cvv" required /> </label>
+
+      <label>
+        <input type="checkbox" name="order-verified" /> Order verified
+      </label>
+
+      <table id="order-container">
+        <thead>
+          <tr>
+            <td>Product</td>
+            <td>Ammount</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Total</td>
+            <td id="table-total-price"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <button type="submit">Confirm</button>
+    </form>
+
+    <script type="module" src="main.mjs"></script>
+  </body>
+</html>

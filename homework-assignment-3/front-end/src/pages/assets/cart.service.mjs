@@ -83,4 +83,31 @@ export class CartService {
 
     return json.data.cart
   }
+
+  /**
+   * Pay the cart items.
+   *
+   * @param {string} source Payment source
+   * @returns {Promise<void>}
+   */
+  async pay(source) {
+    const data = { paymentSource: source }
+
+    const authHeaders = await this._auth.getAuthHeaders()
+    authHeaders.append('Content-Type', 'application/json')
+
+    const res = await fetch(API_HOST + '/cart/pay', {
+      method: 'POST',
+      headers: authHeaders,
+      body: JSON.stringify(data),
+    })
+    const json = await res.json()
+
+    if (json.errors) {
+      const msg = json.errors.map(error => error.message).join(' ')
+      throw new Error(msg)
+    }
+
+    return undefined
+  }
 }
